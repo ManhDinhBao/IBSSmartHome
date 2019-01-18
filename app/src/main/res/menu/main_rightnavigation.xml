@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_setting"
+            android:icon="@drawable/main_setting_48px"
+            android:enabled="true"
+            android:title="@string/mainrightnavigationview_setting" />
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/main_setting_48px"
+            android:enabled="true"
+            android:title="@string/mainrightnavigationview_about" />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/main_logout_48px"
+            android:enabled="true"
+            android:title="@string/mainrightnavigationview_logout" />
+    </group>
+</menu>

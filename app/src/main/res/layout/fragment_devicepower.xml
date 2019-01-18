@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView
+        android:id="@+id/imageview_devicepower_avt"
+        android:layout_marginBottom="16dp"
+        android:layout_above="@id/textview_devicepower_title"
+        android:layout_width="48dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="48dp" />
+    <TextView
+        android:id="@+id/textview_devicepower_title"
+        android:layout_width="wrap_content"
+        android:textSize="@dimen/textsize_all_title"
+        android:text="@string/all_devicepoweron"
+        android:textStyle="bold"
+        android:layout_above="@+id/toggleswitch_devicepower"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:layout_height="wrap_content" />
+    <com.llollox.androidtoggleswitch.widgets.ToggleSwitch
+        android:id="@+id/toggleswitch_devicepower"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        app:textToggleLeft=" "
+        app:toggleHeight="160dp"
+        app:toggleWidth="160dp"
+        app:borderRadius="16dp"
+        app:borderWidth="5dp"
+        app:checkedBackgroundColor="@color/whiteColor"
+        app:uncheckedBackgroundColor="@color/lv5Color"
+        app:checkedBorderColor="@color/lv5Color"
+        app:uncheckedBorderColor="@color/lv5Color"
+        app:separatorVisible="false"
+        app:separatorColor="@color/lv5Color"
+        app:textToggleRight=" " />
+</RelativeLayout>

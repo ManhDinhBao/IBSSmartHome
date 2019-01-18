@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="secondColor">#455a64</color>
+    <color name="yellowColor">#F0CE49</color>
+    <color name="whiteColor">#FFFFFF</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="offColor">#808080</color>
+    <color name="onColor">#FF5B5B5B</color>
+    <color name="lv1Color">#f3f3f3</color>
+    <color name="lv2Color">#eaeaea</color>
+    <color name="lv3Color">#dadada</color>
+    <color name="lv4Color">#b7b7b7</color>
+    <color name="lv5Color">#979797</color>
+    <color name="lv6Color">#6f6f6f</color>
+    <color name="lv7Color">#5b5b5b</color>
+    <color name="lv8Color">#3c3c3c</color>
+    <color name="lv9Color">#1c1c1c</color>
+    <color name="Visible">#0046E8</color>
+    <color name="green">#339933</color>
+
+</resources>

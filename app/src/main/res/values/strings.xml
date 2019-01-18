@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">IBSSmartHome</string>
+    <string name="all_serverip">192.168.1.51</string>
+    <string name="all_apiname">RestScadaAPI</string>
+    <string name="accessories">Accessories</string>
+    <string name="all_newfeed">Dashboard</string>
+    <string name="all_home">Home</string>
+    <string name="all_request">Request</string>
+    <string name="all_utilities">Utilities</string>
+    <string name="all_notification">Notification</string>
+    <string name="mainrightnavigationview_setting">Setting</string>
+    <string name="mainrightnavigationview_about">About</string>
+    <string name="mainrightnavigationview_logout">Log out</string>
+    <string name="all_user">user</string>
+    <string name="all_devicepoweron">Power on</string>
+    <string name="all_devicepoweroff">Power on</string>
+</resources>
