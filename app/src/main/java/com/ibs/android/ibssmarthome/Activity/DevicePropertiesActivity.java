@@ -39,7 +39,7 @@ public class DevicePropertiesActivity extends AppCompatActivity {
 
         viewPagerDeviceProperties = findViewById(R.id.device_properties_viewpager);
         tabDeviceProperties = findViewById(R.id.tab_layout_device_properties);
-
+        loadDevice();
     }
 
     private void loadDevice() {
@@ -50,32 +50,41 @@ public class DevicePropertiesActivity extends AppCompatActivity {
             public void onResponse(String response) {
                 String jsonData = response.toString();
                 ArrayList<Integer> deviceProperties = new ArrayList<>();
-                deviceProperties.add(Comm.DEVICE_PROPERTIES_POWER);
 
                 DeviceObject device = getDeviceFromJson(jsonData);
                 if (device != null) {
                     try {
-                        switch (device.getType()){
+                        switch (device.getType()) {
                             case Comm.DEVICE_TYPE_LIGHT:
+                                deviceProperties.add(Comm.DEVICE_PROPERTIES_POWER);
                                 deviceProperties.add(Comm.DEVICE_PROPERTIES_VALUE);
                                 break;
                             case Comm.DEVICE_TYPE_AC:
+                                deviceProperties.add(Comm.DEVICE_PROPERTIES_POWER);
                                 deviceProperties.add(Comm.DEVICE_PROPERTIES_MODE);
                                 deviceProperties.add(Comm.DEVICE_PROPERTIES_VALUE);
                                 break;
                             case Comm.DEVICE_TYPE_EW:
+                                deviceProperties.add(Comm.DEVICE_PROPERTIES_POWER);
                                 break;
                             case Comm.DEVICE_TYPE_BUTTON:
+                                deviceProperties.add(Comm.DEVICE_PROPERTIES_POWER);
                                 break;
                             case Comm.DEVICE_TYPE_METER:
+                                deviceProperties.add(Comm.DEVICE_PROPERTIES_POWER);
                                 break;
                             case Comm.DEVICE_TYPE_TV:
+                                deviceProperties.add(Comm.DEVICE_PROPERTIES_POWER);
                                 break;
                             case Comm.DEVICE_TYPE_DOOR:
+                                deviceProperties.add(Comm.DEVICE_PROPERTIES_POWER);
                                 break;
                             case Comm.DEVICE_TYPE_FAN:
+                                deviceProperties.add(Comm.DEVICE_PROPERTIES_POWER);
                                 deviceProperties.add(Comm.DEVICE_PROPERTIES_MODE);
                                 break;
+                            default:
+                                deviceProperties.add(Comm.DEVICE_PROPERTIES_POWER);
                         }
 
 

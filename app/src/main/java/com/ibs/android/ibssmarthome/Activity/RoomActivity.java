@@ -48,12 +48,12 @@ public class RoomActivity extends Activity {
         String roomName = getIntent().getStringExtra("EXTRA_ROOM_NAME");
         String titleImage = getIntent().getStringExtra("EXTRA_ROOM_BG");
 
-        imgBackground = findViewById(R.id.imgRoomDetailBG);
+        imgBackground = findViewById(R.id.imageview_room_topbanner);
         //imgBackground.setImageResource(titleImage);
         Picasso.get().load(titleImage).fit().centerCrop().placeholder(R.drawable.loading).into(imgBackground);
 
 
-        txtRoomName = findViewById(R.id.txtRoomDetailName);
+        txtRoomName = findViewById(R.id.textview_room_roomname);
         txtRoomName.setText(roomName);
 
         xGridView = findViewById(R.id.gridDevice);
@@ -87,13 +87,19 @@ public class RoomActivity extends Activity {
                                 MaterialCardView materialCardView = (MaterialCardView)view;
 
                                 if (device.isPower()) {
-                                    materialCardView.setCardBackgroundColor(ContextCompat.getColor(RoomActivity.this,R.color.lv3Color));
-                                    view.setElevation(0);
+                                    if (!device.getType().matches(Comm.DEVICE_TYPE_DOOR))
+                                    {
+                                        materialCardView.setCardBackgroundColor(ContextCompat.getColor(RoomActivity.this,R.color.lv3Color));
+                                        view.setElevation(0);
+                                    }
                                     device.setPower(false);
 
                                 } else {
-                                    materialCardView.setCardBackgroundColor(ContextCompat.getColor(RoomActivity.this,R.color.whiteColor));
-                                    view.setElevation(4);
+                                    if (!device.getType().matches(Comm.DEVICE_TYPE_DOOR))
+                                    {
+                                        materialCardView.setCardBackgroundColor(ContextCompat.getColor(RoomActivity.this,R.color.whiteColor));
+                                        view.setElevation(4);
+                                    }
                                     device.setPower(true);
                                 }
 

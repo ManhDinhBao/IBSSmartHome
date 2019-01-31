@@ -9,6 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.ibs.android.ibssmarthome.Comm;
 import com.ibs.android.ibssmarthome.Object.DeviceObject;
 import com.ibs.android.ibssmarthome.R;
 import com.squareup.picasso.Picasso;
@@ -61,16 +62,24 @@ public class DeviceAdapter extends BaseAdapter {
 
         if (!device.isPower()){
             Picasso.get().load(device.getIconOff()).fit().centerCrop().placeholder(R.drawable.loading).into(viewHolder.imgDeviceIcon);
-            viewHolder.txtDevicePw.setText("Off");
+            if (device.getType().matches(Comm.DEVICE_TYPE_DOOR))
+            {
+                viewHolder.txtDevicePw.setText("Close");
+            }
+            else viewHolder.txtDevicePw.setText("Off");
 
             viewHolder.txtDeviceNm.setTextColor(ContextCompat.getColor(mContext,R.color.lv5Color));
-            viewHolder.txtDevicePw.setVisibility(View.INVISIBLE);
+            //viewHolder.txtDevicePw.setVisibility(View.INVISIBLE);
         }
         else{
             Picasso.get().load(device.getIconOn()).fit().centerCrop().placeholder(R.drawable.loading).into(viewHolder.imgDeviceIcon);
-            viewHolder.txtDevicePw.setText("On");
+            if (device.getType().matches(Comm.DEVICE_TYPE_DOOR))
+            {
+                viewHolder.txtDevicePw.setText("Open");
+            }
+            else viewHolder.txtDevicePw.setText("On");
             viewHolder.txtDeviceNm.setTextColor(ContextCompat.getColor(mContext,R.color.lv7Color));
-            viewHolder.txtDevicePw.setVisibility(View.VISIBLE);
+            //viewHolder.txtDevicePw.setVisibility(View.VISIBLE);
 
         }
         return convertView;

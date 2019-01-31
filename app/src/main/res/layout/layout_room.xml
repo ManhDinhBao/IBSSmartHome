@@ -1,74 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/lv1Color">
+    android:orientation="vertical">
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageview_room_topbanner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/living_room"
+            android:transitionName="imgTransition" />
+    </FrameLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/imgRoomDetailBG"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_margin="16dp"
-            android:scaleType="centerCrop"
-
-            android:src="@drawable/living_room"
-            android:transitionName="imgTransition" />
         <TextView
-            android:id="@+id/txtAccessories"
-            android:text="@string/accessories"
-            android:textColor="@color/lv5Color"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
-            android:padding="5dp"
-            android:textStyle="bold"
-            android:layout_below="@id/imgRoomDetailBG"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/txtRoomDetailName"
+            android:id="@+id/textview_room_roomname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:elevation="2dp"
-            android:padding="5dp"
-            android:shadowColor="#808080"
-            android:shadowDx="0"
-            android:shadowDy="0"
+            android:layout_marginLeft="@dimen/margin_all_default"
+            android:layout_marginTop="64dp"
             android:shadowRadius="5"
-            android:text="Living Room"
+            android:text="@string/all_home"
             android:textColor="@color/whiteColor"
             android:textSize="24sp"
             android:textStyle="bold"
             android:transitionName="txtTransistion" />
 
+        <TextView
+            android:id="@+id/textview_room_accessories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textview_room_roomname"
+            android:layout_marginLeft="@dimen/margin_all_default"
+            android:layout_marginTop="@dimen/margin_all_default"
+            android:text="@string/accessories"
+            android:textColor="@color/whiteColor"
+            android:textSize="@dimen/textsize_all_subtitle"
+            android:textStyle="bold" />
 
         <GridView
-            android:layout_below="@id/txtAccessories"
             android:id="@+id/gridDevice"
-            android:columnWidth="120dp"
-            android:numColumns="3"
-            android:verticalSpacing="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/textview_room_accessories"
             android:clipToPadding="true"
-            android:fitsSystemWindows="true"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
+            android:columnWidth="80dp"
             android:gravity="left"
             android:horizontalSpacing="8dp"
+            android:numColumns="3"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:fitsSystemWindows="true"
             android:stretchMode="columnWidth"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:verticalSpacing="8dp">
 
         </GridView>
 
     </RelativeLayout>
 
-</RelativeLayout>
+</FrameLayout>

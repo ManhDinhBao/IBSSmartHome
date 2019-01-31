@@ -1,37 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/lv2Color"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="@color/lv2Color">
+
     <LinearLayout
-        android:layout_alignParentTop="true"
-        android:background="@drawable/devicevalue_background"
-        android:layout_width="64dp"
-        android:layout_marginTop="@dimen/margin_all_default"
+        android:layout_width="@dimen/size_all_deviceicon"
+        android:layout_height="@dimen/size_all_deviceicon"
+        android:layout_above="@+id/boxedvertical_devicevalue"
         android:layout_centerHorizontal="true"
-        android:layout_height="64dp">
+        android:layout_marginBottom="@dimen/margin_all_default"
+        android:background="@drawable/devicevalue_background">
+
         <TextView
             android:id="@+id/textview_devicevalue"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:textColor="@color/whiteColor"
             android:textSize="@dimen/textsize_all_title"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:textStyle="bold"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:textStyle="bold" />
     </LinearLayout>
+
     <abak.tr.com.boxedverticalseekbar.BoxedVertical
         android:id="@+id/boxedvertical_devicevalue"
-        android:layout_marginTop="120dp"
-        android:layout_marginBottom="@dimen/margin_all_double_default"
-        android:layout_width="240dp"
-        android:layout_height="match_parent"
+        android:layout_width="128dp"
+        android:layout_height="324dp"
+        android:layout_centerInParent="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        app:backgroundColor="@color/color_background"
-        app:progressColor="@color/whiteColor"
-        app:libCornerRadius="100"
+        app:backgroundColor="@color/lv5Color"
         app:defaultValue="40"
+        app:libCornerRadius="96"
+        app:progressColor="@color/whiteColor"
+        app:step="1"
+        app:textEnabled="false"
         app:touchDisabled="true" />
 </RelativeLayout>

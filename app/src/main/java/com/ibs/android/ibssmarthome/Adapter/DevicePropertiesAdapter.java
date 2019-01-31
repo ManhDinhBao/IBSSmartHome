@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.ibs.android.ibssmarthome.Fragment.DeviceModeFragment;
 import com.ibs.android.ibssmarthome.Fragment.DevicePowerFragment;
 import com.ibs.android.ibssmarthome.Fragment.DeviceValueFragment;
 
@@ -24,6 +25,8 @@ public class DevicePropertiesAdapter extends FragmentPagerAdapter {
                 return new DevicePowerFragment();
             case 2:
                 return new DeviceValueFragment();
+            case 3:
+                return new DeviceModeFragment();
             default:
                 return null;
         }

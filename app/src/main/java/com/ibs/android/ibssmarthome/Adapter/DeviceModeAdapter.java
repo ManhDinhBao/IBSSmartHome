@@ -42,7 +42,7 @@ public class DeviceModeAdapter extends BaseAdapter {
             final LayoutInflater layoutInflater = LayoutInflater.from(mContext);
             convertView = layoutInflater.inflate(R.layout.item_device_mode, null);
 
-            final TextView tvDeviceMode = convertView.findViewById(R.id.textview_devicemode_name);
+            TextView tvDeviceMode = convertView.findViewById(R.id.textview_devicemode_name);
 
             final ViewHolder viewHolder =new ViewHolder(tvDeviceMode);
             convertView.setTag(viewHolder);

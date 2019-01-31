@@ -1,6 +1,6 @@
 package com.ibs.android.ibssmarthome.Activity;
 
-import android.graphics.drawable.Drawable;
+import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
@@ -10,10 +10,10 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v8.renderscript.RenderScript;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.ibs.android.ibssmarthome.Fragment.HomeFragment;
 import com.ibs.android.ibssmarthome.Fragment.NewFeedFragment;
@@ -22,28 +22,28 @@ import com.ibs.android.ibssmarthome.Fragment.RequestFragment;
 import com.ibs.android.ibssmarthome.Fragment.UtilitiesFragment;
 import com.ibs.android.ibssmarthome.R;
 
-import eightbitlab.com.blurview.RenderScriptBlur;
-
 public class MainActivity extends AppCompatActivity {
 
-    private BottomNavigationView bottomMenu;
-    private FragmentManager fm;
-    private DrawerLayout mDrawerLayout;
+    private BottomNavigationView mBnvMain;
+    private FragmentManager mFrMngMain;
+    private DrawerLayout mDlMain;
+    View imgBg;
+    private RenderScript rs = null;
+    Bitmap mBlurBitmap;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //setupWindowAnimations();
 
+        //Define controls
+        mFrMngMain = getSupportFragmentManager();
+        mDlMain = findViewById(R.id.drawer_layout_main);
+        mBnvMain = findViewById(R.id.bottomNavigationView_main_menu);
+        NavigationView nvMainRight = findViewById(R.id.navigationView_main_right);
 
-        fm = getSupportFragmentManager();
-        mDrawerLayout = findViewById(R.id.drawer_layout_main);
-
-
-        NavigationView navigationView = findViewById(R.id.navigationView_main_right);
-
-
-        mDrawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
+        //Right menu event
+        mDlMain.addDrawerListener(new DrawerLayout.DrawerListener() {
             @Override
             public void onDrawerSlide(@NonNull View view, float v) {
 
@@ -65,14 +65,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Add default fragment
         AddFragment(new HomeFragment());
 
-        bottomMenu = findViewById(R.id.bottomNavigationView_main_menu);
-        bottomMenu.setItemIconTintList(null);
-        bottomMenu.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        mBnvMain.setItemIconTintList(null);
+        mBnvMain.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                Menu menu = bottomMenu.getMenu();
+                Menu menu = mBnvMain.getMenu();
+
+                //Reset item bottom navigation view to default
                 menu.findItem(R.id.item_main_newfeed).setIcon(R.drawable.main_newfeeditemdefault_48px);
                 menu.findItem(R.id.item_main_home).setIcon(R.drawable.main_homeitemdefault_48px);
                 menu.findItem(R.id.item_main_request).setIcon(R.drawable.main_requestitemdefault_48px);
@@ -107,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void LoadFragment(Fragment fragment) {
-        FragmentTransaction ft_rep = fm.beginTransaction();
+        FragmentTransaction ft_rep = mFrMngMain.beginTransaction();
         ft_rep.replace(R.id.relativelayout_main, fragment);
         //  t_rep.addToBackStack(null);
         ft_rep.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
@@ -115,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void AddFragment(Fragment fragment) {
-        FragmentTransaction ft_add = fm.beginTransaction();
+        FragmentTransaction ft_add = mFrMngMain.beginTransaction();
         ft_add.add(R.id.relativelayout_main, fragment);
         //ft_rep.addToBackStack(null);
         ft_add.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);

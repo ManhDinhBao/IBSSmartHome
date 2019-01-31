@@ -7,16 +7,15 @@
     app:cardCornerRadius="@dimen/size_all_cardradius">
 
     <RelativeLayout
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:padding="8dp">
 
         <ImageView
             android:id="@+id/imgDeviceIcon"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="@dimen/size_all_deviceicon"
+            android:layout_height="@dimen/size_all_deviceicon"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="8dp"
             android:scaleType="fitCenter"
             android:src="@drawable/icon_standard_light" />
 
@@ -34,6 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@id/txtDevicePw"
+            android:layout_marginRight="@dimen/margin_all_half_default"
             android:singleLine="true"
             android:text="Living room light"
             android:textColor="@color/lv7Color"

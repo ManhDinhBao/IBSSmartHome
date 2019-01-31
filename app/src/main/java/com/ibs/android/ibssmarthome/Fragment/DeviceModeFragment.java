@@ -1,29 +1,23 @@
 package com.ibs.android.ibssmarthome.Fragment;
 
-import android.content.Context;
+import android.graphics.Point;
 import android.os.Bundle;
-import android.os.Vibrator;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.card.MaterialCardView;
 import android.support.v4.app.Fragment;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.GridView;
 
-import com.ibs.android.ibssmarthome.Adapter.DeviceModeAdapter;
+import com.ibs.android.ibscontrol.ToggleSwitch.ToggleSwitch;
 import com.ibs.android.ibssmarthome.Comm;
 import com.ibs.android.ibssmarthome.R;
 
-import java.util.ArrayList;
-
 public class DeviceModeFragment extends Fragment {
-    private GridView gridDeviceMode;
-    private ArrayList<String> lstDeviceMode;
     private String deviceType;
-    private DeviceModeAdapter deviceModeAdapter;
+    private ToggleSwitch tsDeviceMode;
 
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,44 +28,36 @@ public class DeviceModeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_devicemode, container, false);
-        gridDeviceMode = view.findViewById(R.id.gridDevice);
-        loadDeviceMode(deviceType);
-        deviceModeAdapter = new DeviceModeAdapter(getActivity().getApplicationContext(), lstDeviceMode);
-        gridDeviceMode.setAdapter(deviceModeAdapter);
+        deviceType = "DT00000002";
+        tsDeviceMode = view.findViewById(R.id.toggleswitch_deviceproperties_mode);
 
-        gridDeviceMode.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Vibrator vibe = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
-                vibe.vibrate(100);
+        //Get screen size
+        Display display = getActivity().getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int width = size.x;
+        int height = size.y;
 
-                MaterialCardView materialCardView = (MaterialCardView)view;
+        tsDeviceMode.setToggleWidth((float) (width * 0.3));
+        tsDeviceMode.setToggleHeight((float) (height * 0.12));
+        tsDeviceMode.setCornerRadius(48);
+        tsDeviceMode.setTextSize(48);
 
-            }
-        });
+        switch (deviceType) {
+            case Comm.DEVICE_TYPE_AC:
+                tsDeviceMode.setLabels(Comm.LIST_THERMOSTAT_MODE);
+                break;
+            case Comm.DEVICE_TYPE_WASHING_MACHINE:
+                tsDeviceMode.setLabels(Comm.LIST_WASHINGMACHINE_MODE);
+                break;
+            case Comm.DEVICE_TYPE_FAN:
+                tsDeviceMode.setLabels(Comm.LIST_FAN_MODE);
+                break;
+            default:
+                tsDeviceMode.setLabels(Comm.LIST_FAN_MODE);
+        }
+
         return view;
     }
 
-    private void loadDeviceMode(String deviceType){
-        lstDeviceMode = new ArrayList<>();
-        switch (deviceType){
-            case Comm.DEVICE_TYPE_AC:
-                lstDeviceMode.add("FAN");
-                lstDeviceMode.add("DRY");
-                lstDeviceMode.add("COOL");
-                lstDeviceMode.add("AUTO");
-                lstDeviceMode.add("HEAT");
-                break;
-            case Comm.DEVICE_TYPE_WASHING_MACHINE:
-                lstDeviceMode.add("WASH");
-                lstDeviceMode.add("SPIN");
-                lstDeviceMode.add("DRY");
-                break;
-            case Comm.DEVICE_TYPE_FAN:
-                lstDeviceMode.add("LOW");
-                lstDeviceMode.add("MEDIUM");
-                lstDeviceMode.add("HIGH");
-                break;
-        }
-    }
 }

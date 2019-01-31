@@ -3,11 +3,16 @@
     <dimen name="elevation_main_bottomnavigation">4dp</dimen>
     <dimen name="textsize_main_bottomnavigation">2sp</dimen>
     <dimen name="textsize_all_title">20sp</dimen>
+    <dimen name="textsize_all_subtitle">16sp</dimen>
     <dimen name="margin_all_default">16dp</dimen>
     <dimen name="margin_all_half_default">8dp</dimen>
     <dimen name="margin_all_double_default">32dp</dimen>
-    <dimen name="size_all_itemsize">120dp</dimen>
+    <dimen name="size_all_itemsize">100dp</dimen>
     <dimen name="elevation_all_onstate">4dp</dimen>
     <dimen name="elevation_all_offstate">1dp</dimen>
-    <dimen name="size_all_cardradius">5dp</dimen>
+    <dimen name="size_all_cardradius">10dp</dimen>
+    <dimen name="height_device_properties">164dp</dimen>
+    <dimen name="width_device_properties">128dp</dimen>
+    <dimen name="size_all_deviceradius">24dp</dimen>
+    <dimen name="size_all_deviceicon">24dp</dimen>
 </resources>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="blue">#123256</color>
+
+    <color name="lv1Color">#f3f3f3</color>
+    <color name="lv2Color">#eaeaea</color>
+    <color name="lv3Color">#dadada</color>
+    <color name="lv4Color">#b7b7b7</color>
+    <color name="lv5Color">#979797</color>
+    <color name="lv6Color">#6f6f6f</color>
+    <color name="lv7Color">#5b5b5b</color>
+    <color name="lv8Color">#3c3c3c</color>
+    <color name="lv9Color">#1c1c1c</color>
+
+</resources>
