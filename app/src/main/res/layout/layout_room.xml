@@ -10,11 +10,11 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/imageview_room_topbanner"
+            android:id="@+id/imageview_room_background"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/living_room"
+            app:srcCompat="@drawable/living_room"
             android:transitionName="imgTransition" />
     </FrameLayout>
 
@@ -29,10 +29,11 @@
             android:layout_alignParentTop="true"
             android:layout_marginLeft="@dimen/margin_all_default"
             android:layout_marginTop="64dp"
-            android:shadowRadius="5"
+            android:fontFamily="@font/reality_sunday_light"
+            android:shadowRadius="@integer/textshadow_room_roomtitle"
             android:text="@string/all_home"
             android:textColor="@color/whiteColor"
-            android:textSize="24sp"
+            android:textSize="@dimen/textsize_all_title"
             android:textStyle="bold"
             android:transitionName="txtTransistion" />
 
@@ -43,26 +44,28 @@
             android:layout_below="@+id/textview_room_roomname"
             android:layout_marginLeft="@dimen/margin_all_default"
             android:layout_marginTop="@dimen/margin_all_default"
+            android:fontFamily="@font/reality_sunday_light"
             android:text="@string/accessories"
             android:textColor="@color/whiteColor"
             android:textSize="@dimen/textsize_all_subtitle"
             android:textStyle="bold" />
 
         <GridView
-            android:id="@+id/gridDevice"
+            android:id="@+id/gridview_room_device"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/textview_room_accessories"
+            android:layout_marginLeft="@dimen/margin_all_default"
+            android:layout_marginTop="@dimen/margin_all_half_default"
+            android:layout_marginRight="@dimen/margin_all_default"
             android:clipToPadding="true"
-            android:columnWidth="80dp"
-            android:gravity="left"
-            android:horizontalSpacing="8dp"
-            android:numColumns="3"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:fitsSystemWindows="true"
-            android:stretchMode="columnWidth"
-            android:verticalSpacing="8dp">
+            android:horizontalSpacing="@dimen/grid_spacing"
+            android:verticalSpacing="@dimen/grid_spacing"
+            android:columnWidth="@dimen/columnsize_room_gridDevices"
+            android:layoutAnimation="@anim/layout_animation_slide_from_left"
+            android:gravity="center"
+            android:numColumns="@integer/column_count"
+            android:stretchMode="none">
 
         </GridView>
 

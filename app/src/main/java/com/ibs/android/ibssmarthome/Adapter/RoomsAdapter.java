@@ -2,8 +2,7 @@ package com.ibs.android.ibssmarthome.Adapter;
 
 import android.content.Context;
 import android.graphics.Point;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +16,8 @@ import com.ibs.android.ibssmarthome.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.RoomsViewHolder> {
     private Context mContext;
@@ -62,25 +63,25 @@ public class RoomsAdapter extends RecyclerView.Adapter<RoomsAdapter.RoomsViewHol
         RoomObject room=mItemList.get(i);
 
         String roomName = room.getName();
-        String roomType = room.getType();
+        String roomType = room.getType().getID();
 
         String roomBG = room.getWallPicture();
         //int intRoomBG = Integer.parseInt(roomBG);
 
         Picasso.get().load(roomBG).fit().centerCrop().placeholder(R.drawable.living_room).into(roomsViewHolder.mImgRoomBG);
 
-//        switch (roomType){
-//            case "RT00000001":Picasso.get().load(R.drawable.living_room).fit().centerCrop().placeholder(R.drawable.living_room).into(roomsViewHolder.mImgRoomBG);
-//                break;
-//            case "RT00000002":Picasso.get().load(R.drawable.bedroom).fit().centerCrop().placeholder(R.drawable.bedroom).into(roomsViewHolder.mImgRoomBG);
-//                break;
-//            case "RT00000003":Picasso.get().load(R.drawable.bathroom).fit().centerCrop().placeholder(R.drawable.bathroom).into(roomsViewHolder.mImgRoomBG);
-//                break;
-//            case "RT00000004":Picasso.get().load(R.drawable.kitchen).fit().centerCrop().placeholder(R.drawable.kitchen).into(roomsViewHolder.mImgRoomBG);
-//                break;
-//            case "RT00000005":Picasso.get().load(R.drawable.balcony).fit().centerCrop().placeholder(R.drawable.balcony).into(roomsViewHolder.mImgRoomBG);
-//                break;
-//        }
+        switch (roomType){
+            case "RT00000001":Picasso.get().load(R.drawable.living_room).fit().centerCrop().placeholder(R.drawable.living_room).into(roomsViewHolder.mImgRoomBG);
+                break;
+            case "RT00000002":Picasso.get().load(R.drawable.bedroom).fit().centerCrop().placeholder(R.drawable.bedroom).into(roomsViewHolder.mImgRoomBG);
+                break;
+            case "RT00000003":Picasso.get().load(R.drawable.bathroom).fit().centerCrop().placeholder(R.drawable.bathroom).into(roomsViewHolder.mImgRoomBG);
+                break;
+            case "RT00000004":Picasso.get().load(R.drawable.kitchen).fit().centerCrop().placeholder(R.drawable.kitchen).into(roomsViewHolder.mImgRoomBG);
+                break;
+            case "RT00000005":Picasso.get().load(R.drawable.balcony).fit().centerCrop().placeholder(R.drawable.balcony).into(roomsViewHolder.mImgRoomBG);
+                break;
+        }
 
         roomsViewHolder.mTxtRoomName.setText(roomName);
     }

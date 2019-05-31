@@ -1,42 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:custom="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/lv2Color">
+    android:background="@color/transparent"
+    android:orientation="horizontal">
 
-    <ImageView
-        android:id="@+id/imageview_devicepower_avt"
-        android:layout_width="@dimen/size_all_deviceicon"
-        android:layout_height="@dimen/size_all_deviceicon"
-        android:layout_above="@id/textview_devicepower_title"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/margin_all_half_default" />
+    <data>
 
-    <TextView
-        android:id="@+id/textview_devicepower_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/toggleswitch_deviceproperties_power"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="32dp"
-        android:text="@string/all_devicepoweron"
-        android:textSize="@dimen/textsize_all_title"
-        android:textStyle="bold" />
+    </data>
 
-    <com.ibs.android.ibscontrol.ToggleSwitch.ToggleSwitch
-        android:id="@+id/toggleswitch_deviceproperties_power"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_gravity="center"
-        custom:cornerRadius="@dimen/size_all_deviceradius"
-        custom:textToggleLeft=" "
-        custom:textToggleRight=" "
-        custom:toggleHeight="160"
-        custom:toggleWidth="120">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    </com.ibs.android.ibscontrol.ToggleSwitch.ToggleSwitch>
+        <TextView
+            android:id="@+id/textview_devicepower_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/toggleswitch_deviceproperties_power"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="@dimen/margin_all_default"
+            android:gravity="center"
+            android:textColor="@color/whiteColor"
+            android:textSize="@dimen/textsize_all_title"
+            android:textStyle="bold" />
 
-</RelativeLayout>
+        <com.ibs.android.ibscontrol.ToggleSwitch.ToggleSwitch
+            android:id="@+id/toggleswitch_deviceproperties_power"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            custom:cornerRadius="100"
+            custom:textToggleLeft=" "
+            custom:textToggleRight=" "
+            custom:toggleHeight="160"
+            custom:toggleWidth="120">
+
+        </com.ibs.android.ibscontrol.ToggleSwitch.ToggleSwitch>
+    </RelativeLayout>
+
+</LinearLayout>

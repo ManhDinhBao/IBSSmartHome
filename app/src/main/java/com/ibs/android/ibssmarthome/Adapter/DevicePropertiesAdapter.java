@@ -1,40 +1,41 @@
 package com.ibs.android.ibssmarthome.Adapter;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.ibs.android.ibssmarthome.Fragment.DeviceModeFragment;
+import com.ibs.android.ibssmarthome.Comm;
+import com.ibs.android.ibssmarthome.Fragment.DeviceMultiValueFragment;
 import com.ibs.android.ibssmarthome.Fragment.DevicePowerFragment;
-import com.ibs.android.ibssmarthome.Fragment.DeviceValueFragment;
+import com.ibs.android.ibssmarthome.Fragment.DeviceRangeFragment;
+import com.ibs.android.ibssmarthome.Object.PointCharacterObject;
 
 import java.util.ArrayList;
 
 public class DevicePropertiesAdapter extends FragmentPagerAdapter {
 
-    private ArrayList<Integer> deviceProperties;
-    public DevicePropertiesAdapter(FragmentManager fragmentManager, ArrayList<Integer> deviceProperties) {
+    private ArrayList<PointCharacterObject> pointCharacter;
+    public DevicePropertiesAdapter(FragmentManager fragmentManager, ArrayList<PointCharacterObject> pointCharacter) {
         super(fragmentManager);
-        this.deviceProperties=deviceProperties;
+        this.pointCharacter =pointCharacter;
     }
 
     @Override
     public Fragment getItem(int i) {
-        switch (deviceProperties.get(i)){
-            case 1:
-                return new DevicePowerFragment();
-            case 2:
-                return new DeviceValueFragment();
-            case 3:
-                return new DeviceModeFragment();
+        switch (pointCharacter.get(i).getType()){
+            case Comm.POINT_CHARACTER_POWER:
+                return DevicePowerFragment.newInstance(pointCharacter.get(i).getValue(),pointCharacter.get(i).getPoint().getId());
+            case Comm.POINT_CHARACTER_RANGE:
+                return DeviceRangeFragment.newInstance(pointCharacter.get(i).getValue(),pointCharacter.get(i).getPoint().getId());
+            case Comm.POINT_CHARACTER_MULTIVALUE:
+                return DeviceMultiValueFragment.newInstance(pointCharacter.get(i).getValue(),pointCharacter.get(i).getPoint().getId());
             default:
                 return null;
         }
-
     }
 
     @Override
     public int getCount() {
-        return deviceProperties.size();
+        return pointCharacter.size();
     }
 }

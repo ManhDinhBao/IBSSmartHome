@@ -3,39 +3,68 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/lv2Color">
+    android:background="@color/transparent">
 
     <LinearLayout
-        android:layout_width="@dimen/size_all_deviceicon"
-        android:layout_height="@dimen/size_all_deviceicon"
-        android:layout_above="@+id/boxedvertical_devicevalue"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/margin_all_default"
-        android:background="@drawable/devicevalue_background">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:weightSum="10">
 
-        <TextView
-            android:id="@+id/textview_devicevalue"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
+            android:layout_height="0dp"
+            android:layout_weight="3">
+
+            <RelativeLayout
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="@dimen/margin_all_half_default"
+                android:background="@drawable/devicevalue_background">
+
+                <TextView
+                    android:id="@+id/textview_devicevalue"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="@color/whiteColor"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/linearlayout_boxedvertical_devicevalue"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:gravity="center"
-            android:textColor="@color/whiteColor"
-            android:textSize="@dimen/textsize_all_title"
-            android:textStyle="bold" />
+            android:layout_weight="4">
+
+            <abak.tr.com.boxedverticalseekbar.BoxedVertical
+                android:id="@+id/boxedvertical_devicevalue"
+                android:layout_width="@dimen/toggle_grange_width"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                app:backgroundColor="@color/lv5Color"
+                app:defaultValue="20"
+                app:libCornerRadius="96"
+                app:max="100"
+                app:progressColor="@color/whiteColor"
+                app:step="1"
+                app:textEnabled="false"
+                app:touchDisabled="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3">
+
+        </LinearLayout>
     </LinearLayout>
 
-    <abak.tr.com.boxedverticalseekbar.BoxedVertical
-        android:id="@+id/boxedvertical_devicevalue"
-        android:layout_width="128dp"
-        android:layout_height="324dp"
-        android:layout_centerInParent="true"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        app:backgroundColor="@color/lv5Color"
-        app:defaultValue="40"
-        app:libCornerRadius="96"
-        app:progressColor="@color/whiteColor"
-        app:step="1"
-        app:textEnabled="false"
-        app:touchDisabled="true" />
+
 </RelativeLayout>

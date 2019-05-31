@@ -4,7 +4,7 @@
     xmlns:custom="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/lv2Color">
+    android:background="@color/transparent">
 
 
     <com.ibs.android.ibscontrol.ToggleSwitch.ToggleSwitch
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_gravity="center"
-        custom:cornerRadius="@dimen/size_all_deviceradius"
+        custom:cornerRadius="100dp"
         custom:toggleHeight="160dp"
         custom:toggleWidth="120dp"
         custom:textToggleLeft=" "

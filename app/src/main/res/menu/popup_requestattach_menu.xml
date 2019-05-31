@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/item_request_new_photo"
+        android:enabled="true"
+        android:title="Take a photo"/>
+    <item
+        android:id="@+id/item_request_load_photo"
+        android:enabled="true"
+        android:title="Load photos"/>
+</menu>

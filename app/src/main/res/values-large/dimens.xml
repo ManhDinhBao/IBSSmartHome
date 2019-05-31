@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Margin -->
+    <dimen name="margin_all_default">24dp</dimen>
+    <dimen name="margin_all_half_default">12dp</dimen>
+    <dimen name="margin_all_double_default">48dp</dimen>
+
+    <!-- Button size -->
+    <dimen name="button_height_login">80dp</dimen>
+
+    <!-- Text size -->
+    <dimen name="textsize_login_forgotpass">14sp</dimen>
+    <dimen name="textsize_login_input">18sp</dimen>
+    <dimen name="textsize_home_hometitle">24sp</dimen>
+    <dimen name="textsize_home_roomtitle">48sp</dimen>
+    <dimen name="textsize_main_bottomnavigation">2sp</dimen>
+    <dimen name="textsize_all_title">48sp</dimen>
+    <dimen name="textsize_all_subtitle">24sp</dimen>
+
+    <!-- Card size -->
+    <dimen name="cardviewheight_home_hometitle">80dp</dimen>
+    <dimen name="elevation_main_bottomnavigation">4dp</dimen>
+    <dimen name="elevation_home_hometitle">2dp</dimen>
+    <dimen name="elevation_room_roomitem">2dp</dimen>
+    <dimen name="card_corner_radius">10dp</dimen>
+    <dimen name="elevation_all_onstate">4dp</dimen>
+    <dimen name="elevation_all_offstate">1dp</dimen>
+
+    <dimen name="cardviewheight_request_requesttitle">80dp</dimen>
+
+    <!-- GridView size -->
+    <dimen name="columnsize_room_gridDevices">120dp</dimen>
+    <dimen name="grid_spacing">14dp</dimen>
+
+    <dimen name="size_all_deviceradius">24dp</dimen>
+    <dimen name="size_all_deviceicon">24dp</dimen>
+
+    <!-- Padding -->
+    <dimen name="padding_all_default">16dp</dimen>
+
+    <!-- ImageView -->
+    <dimen name="imagesize_login_logo">180dp</dimen>
+
+    <!-- Toggle -->
+    <dimen name="toggle_grange_width">200dp</dimen>
+
+</resources>

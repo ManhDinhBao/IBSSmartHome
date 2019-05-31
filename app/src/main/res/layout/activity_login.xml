@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_background">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageView_login_blurBackground"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/relativelayout_login_bottom"
+        android:orientation="vertical"
+        android:weightSum="10">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4"
+            android:layoutAnimation="@anim/layout_animation_slide_from_top">
+
+            <ImageView
+                android:id="@+id/imageView_login_logo"
+                android:layout_width="@dimen/imagesize_login_logo"
+                android:layout_height="@dimen/imagesize_login_logo"
+                android:layout_centerInParent="true"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/summit_logo" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relativelayout_login_mid"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_above="@id/relativelayout_login_bottom"
+            android:layout_below="@+id/imageView_login_logo"
+            android:layout_weight="6"
+            android:layoutAnimation="@anim/layout_animation_slide_from_right">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout_login_account"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_all_double_default"
+                android:layout_marginTop="@dimen/margin_all_default"
+                android:layout_marginRight="@dimen/margin_all_double_default"
+                android:textColorHint="@color/whiteColor"
+                app:boxBackgroundColor="@color/transparent"
+                app:counterEnabled="true"
+                app:counterMaxLength="@integer/account_maxlength"
+                app:counterTextAppearance="@style/CounterStyle"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editText_login_account"
+                    style="@style/Widget.MaterialComponents.TextInputEditText.FilledBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Account"
+                    android:textColor="@color/whiteColor"
+                    android:textSize="@dimen/textsize_login_input" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout_login_password"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textInputLayout_login_account"
+                android:layout_marginLeft="@dimen/margin_all_double_default"
+                android:layout_marginRight="@dimen/margin_all_double_default"
+                android:textColorHint="@color/whiteColor"
+                app:boxBackgroundColor="@color/transparent"
+                app:counterEnabled="true"
+                app:counterMaxLength="@integer/account_maxlength"
+                app:counterTextAppearance="@style/CounterStyle"
+                app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/whiteColor">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editText_login_password"
+                    style="@style/Widget.MaterialComponents.TextInputEditText.FilledBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:textColor="@color/whiteColor"
+                    android:textSize="@dimen/textsize_login_input" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_login_signIn"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height_login"
+                android:layout_below="@id/textInputLayout_login_password"
+                android:layout_marginLeft="@dimen/margin_all_double_default"
+                android:layout_marginTop="@dimen/margin_all_double_default"
+                android:layout_marginRight="@dimen/margin_all_double_default"
+                android:text="Sign In"
+                android:textAllCaps="false"
+                android:textColor="@color/whiteColor"
+                android:textSize="@dimen/textsize_login_input"
+                android:textStyle="bold"
+                app:rippleColor="@color/whiteColor"
+                app:strokeColor="@color/whiteColor" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_login_forGotPassword"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/button_login_signIn"
+                android:layout_marginLeft="@dimen/margin_all_double_default"
+                android:layout_marginRight="@dimen/margin_all_double_default"
+                android:text="Forgot Password?"
+                android:textAllCaps="false"
+                android:textColor="@color/whiteColor"
+                android:textSize="@dimen/textsize_login_forgotpass"
+                android:textStyle="bold"
+                app:rippleColor="@color/whiteColor"
+                app:strokeColor="@color/whiteColor" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativelayout_login_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:layoutAnimation="@anim/layout_animation_slide_from_bottom">
+
+        <ImageButton
+            android:id="@+id/button_login_google"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerInParent="true"
+            android:background="@color/transparent"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/google" />
+
+        <ImageButton
+            android:id="@+id/button_login_facebook"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@id/button_login_google"
+            android:background="@color/transparent"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/facebook" />
+
+        <ImageButton
+            android:id="@+id/button_login_twitter"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/button_login_google"
+            android:background="@color/transparent"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/twitter" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -6,7 +6,7 @@ public class DeviceObject {
     private String Id;
     private String Name;
     private String Description;
-    private String Type;
+    private DeviceTypeObject Type;
     private String IconOn;
     private String IconOff;
     private boolean Power;
@@ -21,7 +21,7 @@ public class DeviceObject {
     public DeviceObject() {
     }
 
-    public DeviceObject(String id, String name, String description, String type, String iconOn, String iconOff, boolean power, ArrayList<PointObject> points) {
+    public DeviceObject(String id, String name, String description, DeviceTypeObject type, String iconOn, String iconOff, boolean power, ArrayList<PointObject> points) {
         Id = id;
         Name = name;
         Description = description;
@@ -56,11 +56,11 @@ public class DeviceObject {
         Description = description;
     }
 
-    public String getType() {
+    public DeviceTypeObject getType() {
         return Type;
     }
 
-    public void setType(String type) {
+    public void setType(DeviceTypeObject type) {
         Type = type;
     }
 
@@ -94,5 +94,14 @@ public class DeviceObject {
 
     public void setPoints(ArrayList<PointObject> points) {
         this.points = points;
+    }
+
+    public String GetPowerPublicTopic(){
+        for (PointObject p: points) {
+            if (p.getType().getID().matches("PT00000001")){
+                return p.getCmdAddress();
+            }
+        }
+        return null;
     }
 }

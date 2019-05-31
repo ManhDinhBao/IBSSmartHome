@@ -5,17 +5,15 @@ import java.util.ArrayList;
 public class RoomObject {
     private String ID;
     private String Name;
-    private String Type;
+    private RoomTypeObject Type;
     private String IconPicture;
     private String WallPicture;
     private ArrayList<DeviceObject> devices;
 
-    //TYPE: 1:LIVING 2:BED 3:BATH 4:KITCHEN 5:BALCONY
-
     public RoomObject() {
     }
 
-    public RoomObject(String ID, String name, String type, String iconPicture, String wallPicture, ArrayList<DeviceObject> devices) {
+    public RoomObject(String ID, String name, RoomTypeObject type, String iconPicture, String wallPicture, ArrayList<DeviceObject> devices) {
         this.ID = ID;
         Name = name;
         Type = type;
@@ -40,11 +38,11 @@ public class RoomObject {
         Name = name;
     }
 
-    public String getType() {
+    public RoomTypeObject getType() {
         return Type;
     }
 
-    public void setType(String type) {
+    public void setType(RoomTypeObject type) {
         Type = type;
     }
 
@@ -71,5 +69,4 @@ public class RoomObject {
     public void setDevices(ArrayList<DeviceObject> devices) {
         this.devices = devices;
     }
-
 }

@@ -1,18 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="elevation_main_bottomnavigation">4dp</dimen>
-    <dimen name="textsize_main_bottomnavigation">2sp</dimen>
-    <dimen name="textsize_all_title">20sp</dimen>
-    <dimen name="textsize_all_subtitle">16sp</dimen>
+    <!-- Margin -->
     <dimen name="margin_all_default">16dp</dimen>
     <dimen name="margin_all_half_default">8dp</dimen>
     <dimen name="margin_all_double_default">32dp</dimen>
-    <dimen name="size_all_itemsize">100dp</dimen>
+
+    <!-- Button size -->
+    <dimen name="button_height_login">70dp</dimen>
+
+    <!-- Text size -->
+    <dimen name="textsize_login_forgotpass">12sp</dimen>
+    <dimen name="textsize_login_input">16sp</dimen>
+    <dimen name="textsize_home_hometitle">24sp</dimen>
+    <dimen name="textsize_home_roomtitle">48sp</dimen>
+    <dimen name="textsize_main_bottomnavigation">2sp</dimen>
+    <dimen name="textsize_all_title">48sp</dimen>
+    <dimen name="textsize_all_subtitle">24sp</dimen>
+
+    <!-- Card size -->
+    <dimen name="cardviewheight_home_hometitle">60dp</dimen>
+    <dimen name="elevation_main_bottomnavigation">4dp</dimen>
+    <dimen name="elevation_home_hometitle">2dp</dimen>
+    <dimen name="elevation_room_roomitem">2dp</dimen>
+    <dimen name="card_corner_radius">10dp</dimen>
+    <dimen name="card_all_devicesize">120dp</dimen>
     <dimen name="elevation_all_onstate">4dp</dimen>
     <dimen name="elevation_all_offstate">1dp</dimen>
-    <dimen name="size_all_cardradius">10dp</dimen>
-    <dimen name="height_device_properties">164dp</dimen>
-    <dimen name="width_device_properties">128dp</dimen>
+
+    <dimen name="cardviewheight_request_requesttitle">60dp</dimen>
+
+
+    <!-- GridView size -->
+    <dimen name="columnsize_room_gridDevices">120dp</dimen>
+    <dimen name="grid_spacing">14dp</dimen>
+
     <dimen name="size_all_deviceradius">24dp</dimen>
     <dimen name="size_all_deviceicon">24dp</dimen>
+
+    <!-- Padding -->
+    <dimen name="padding_all_default">16dp</dimen>
+
+    <!-- ImageView -->
+    <dimen name="imagesize_login_logo">180dp</dimen>
+
+    <!-- Toggle -->
+    <dimen name="toggle_grange_width">160dp</dimen>
+
+
 </resources>

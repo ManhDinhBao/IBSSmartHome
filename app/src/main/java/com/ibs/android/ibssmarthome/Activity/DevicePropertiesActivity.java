@@ -1,143 +1,114 @@
 package com.ibs.android.ibssmarthome.Activity;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.annotation.Nullable;
+
+import com.google.android.material.tabs.TabLayout;
+
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.app.AppCompatActivity;
+import jp.wasabeef.blurry.Blurry;
+
 import android.util.Log;
+import android.widget.ImageView;
 
-
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.ibs.android.ibssmarthome.Adapter.DevicePropertiesAdapter;
 import com.ibs.android.ibssmarthome.Comm;
+import com.ibs.android.ibssmarthome.Global;
 import com.ibs.android.ibssmarthome.Object.DeviceObject;
+import com.ibs.android.ibssmarthome.Object.PointCharacterObject;
 import com.ibs.android.ibssmarthome.Object.PointObject;
 import com.ibs.android.ibssmarthome.R;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 
 public class DevicePropertiesActivity extends AppCompatActivity {
 
-    private ViewPager viewPagerDeviceProperties;
-    private TabLayout tabDeviceProperties;
-    private DevicePropertiesAdapter adapterViewPager;
-    private String deviceId = "";
+    private ViewPager                   viewPagerDeviceProperties;
+    private TabLayout                   tabDeviceProperties;
+    private DevicePropertiesAdapter     adapterViewPager;
+    private String                      deviceId = "",roomTypeId;
+    private Bitmap                      bmBackGround;
+    private ImageView                   mIvRoomBlurBackground;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_deviceproperties);
 
-        deviceId = getIntent().getStringExtra("EXTRA_DEVICE_ID");
+        //Get room type and device id from Room activity
+        deviceId     = getIntent().getStringExtra("EXTRA_DEVICE_ID");
+        roomTypeId   = getIntent().getStringExtra("EXTRA_ROOM_TYPE_ID");
 
+        //Get device info by id
+        DeviceObject device = Global.GetDeviceById(deviceId);
+
+        //Get Character of each point in device
+        ArrayList<PointCharacterObject> pointCharacter = new ArrayList<>();
+        try {
+            for (PointObject p : device.getPoints()) {
+
+                JSONObject objCharacter     = new JSONObject(p.getCharacter().getData());
+                String charType             = objCharacter.getString("TYPE");
+                Log.d("SmartHome","DevicePropertiesActivity: Type - "+charType);
+                JSONArray arrValue          = objCharacter.getJSONArray("VALUE");
+                Log.d("SmartHome","DevicePropertiesActivity: Value -"+arrValue.toString());
+                pointCharacter.add(new PointCharacterObject(p,charType,arrValue.toString()));
+            }
+
+        } catch (Exception ex) {
+            Log.e("manh", ex.toString());
+        }
+
+        //region Control Define
         viewPagerDeviceProperties = findViewById(R.id.device_properties_viewpager);
         tabDeviceProperties = findViewById(R.id.tab_layout_device_properties);
-        loadDevice();
-    }
+        mIvRoomBlurBackground = findViewById(R.id.imageView_deviceproperties_blurBackground);
+        //endregion
 
-    private void loadDevice() {
-        String Url = Comm.strAPI + "Device/" + deviceId;
-
-        StringRequest stringRequest = new StringRequest(com.android.volley.Request.Method.GET, Url, new com.android.volley.Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                String jsonData = response.toString();
-                ArrayList<Integer> deviceProperties = new ArrayList<>();
-
-                DeviceObject device = getDeviceFromJson(jsonData);
-                if (device != null) {
-                    try {
-                        switch (device.getType()) {
-                            case Comm.DEVICE_TYPE_LIGHT:
-                                deviceProperties.add(Comm.DEVICE_PROPERTIES_POWER);
-                                deviceProperties.add(Comm.DEVICE_PROPERTIES_VALUE);
-                                break;
-                            case Comm.DEVICE_TYPE_AC:
-                                deviceProperties.add(Comm.DEVICE_PROPERTIES_POWER);
-                                deviceProperties.add(Comm.DEVICE_PROPERTIES_MODE);
-                                deviceProperties.add(Comm.DEVICE_PROPERTIES_VALUE);
-                                break;
-                            case Comm.DEVICE_TYPE_EW:
-                                deviceProperties.add(Comm.DEVICE_PROPERTIES_POWER);
-                                break;
-                            case Comm.DEVICE_TYPE_BUTTON:
-                                deviceProperties.add(Comm.DEVICE_PROPERTIES_POWER);
-                                break;
-                            case Comm.DEVICE_TYPE_METER:
-                                deviceProperties.add(Comm.DEVICE_PROPERTIES_POWER);
-                                break;
-                            case Comm.DEVICE_TYPE_TV:
-                                deviceProperties.add(Comm.DEVICE_PROPERTIES_POWER);
-                                break;
-                            case Comm.DEVICE_TYPE_DOOR:
-                                deviceProperties.add(Comm.DEVICE_PROPERTIES_POWER);
-                                break;
-                            case Comm.DEVICE_TYPE_FAN:
-                                deviceProperties.add(Comm.DEVICE_PROPERTIES_POWER);
-                                deviceProperties.add(Comm.DEVICE_PROPERTIES_MODE);
-                                break;
-                            default:
-                                deviceProperties.add(Comm.DEVICE_PROPERTIES_POWER);
-                        }
-
-
-                        adapterViewPager = new DevicePropertiesAdapter(getSupportFragmentManager(), deviceProperties);
-                        viewPagerDeviceProperties.setAdapter(adapterViewPager);
-
-                        tabDeviceProperties.setupWithViewPager(viewPagerDeviceProperties, true);
-                    } catch (Exception ex) {
-                        Log.e("manh", ex.toString());
-                    }
-                }
-            }
-        }, new com.android.volley.Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-        });
-
-        Volley.newRequestQueue(this).add(stringRequest);
-
-    }
-
-    private DeviceObject getDeviceFromJson(String jsonData) {
-        try {
-            JSONObject ojDevice = new JSONObject(jsonData);
-
-            String deviceId = ojDevice.getString("ID");
-            String deviceName = ojDevice.getString("Name");
-            String deviceDescr = ojDevice.getString("Descr");
-            String deviceType = ojDevice.getString("Type");
-            String deviceIconOn = ojDevice.getString("IconOn");
-            String deviceIconOff = ojDevice.getString("IconOff");
-
-            JSONArray arrPoints = new JSONArray(ojDevice.getString("Points"));
-            ArrayList<PointObject> points = new ArrayList<>();
-            for (int j = 0; j < arrPoints.length(); j++) {
-                JSONObject ojPoints = arrPoints.getJSONObject(j);
-
-                String pointID = ojPoints.getString("ID");
-                String pointName = ojPoints.getString("Name");
-                String pointDescr = ojPoints.getString("Descr");
-                String pointType = ojPoints.getString("Type");
-                String pointAddress = ojPoints.getString("Address");
-
-                points.add(new PointObject(pointID, pointName, pointDescr, pointType, pointAddress));
-            }
-
-            return new DeviceObject(deviceId, deviceName, deviceDescr, deviceType, deviceIconOn, deviceIconOff, true, points);
-
-        } catch (JSONException ex) {
-            Log.e("manh", ex.toString());
-            return null;
+        //region Control Set
+        //Get background image based on room type
+        switch (roomTypeId) {
+            case Comm.ROOM_TYPE_LIVING:
+                bmBackGround            = BitmapFactory.decodeResource(getResources(), R.drawable.living_room);
+                break;
+            case Comm.ROOM_TYPE_BED:
+                bmBackGround            = BitmapFactory.decodeResource(getResources(), R.drawable.bedroom);
+                break;
+            case Comm.ROOM_TYPE_BATH:
+                bmBackGround            = BitmapFactory.decodeResource(getResources(), R.drawable.bathroom);
+                break;
+            case Comm.ROOM_TYPE_KITCHEN:
+                bmBackGround            = BitmapFactory.decodeResource(getResources(), R.drawable.kitchen);
+                break;
+            case Comm.ROOM_TYPE_BALCONY:
+                bmBackGround            = BitmapFactory.decodeResource(getResources(), R.drawable.balcony);
+                break;
+            case Comm.ROOM_TYPE_YARD:
+                bmBackGround            = BitmapFactory.decodeResource(getResources(), R.drawable.yard);
+                break;
+            default:
+                bmBackGround            = BitmapFactory.decodeResource(getResources(), R.drawable.living_room);
         }
+
+        //Make blur background
+        if (bmBackGround!=null)
+        {
+            Blurry.with(this).sampling(1).from(bmBackGround).into(mIvRoomBlurBackground);
+        }
+
+        //Set viewpager adater
+        adapterViewPager = new DevicePropertiesAdapter(getSupportFragmentManager(), pointCharacter);
+        viewPagerDeviceProperties.setAdapter(adapterViewPager);
+
+        tabDeviceProperties.setupWithViewPager(viewPagerDeviceProperties, true);
+        //endregion
+
     }
 }

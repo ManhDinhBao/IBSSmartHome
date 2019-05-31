@@ -1,44 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="@dimen/size_all_itemsize"
-    android:layout_height="@dimen/size_all_itemsize"
-    android:elevation="@dimen/elevation_all_onstate"
-    app:cardCornerRadius="@dimen/size_all_cardradius">
+    android:background="@color/transparent"
+    app:cardCornerRadius="@dimen/card_corner_radius"
+    android:elevation="0dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="8dp">
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardview_deviceitem"
+        android:layout_width="@dimen/card_all_devicesize"
+        android:layout_height="@dimen/card_all_devicesize"
+        android:elevation="@dimen/elevation_all_onstate"
+        app:cardCornerRadius="@dimen/card_corner_radius">
 
-        <ImageView
-            android:id="@+id/imgDeviceIcon"
-            android:layout_width="@dimen/size_all_deviceicon"
-            android:layout_height="@dimen/size_all_deviceicon"
-            android:layout_alignParentTop="true"
-            android:scaleType="fitCenter"
-            android:src="@drawable/icon_standard_light" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp">
 
-        <TextView
-            android:id="@+id/txtDevicePw"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:text="ON"
-            android:textColor="@color/lv4Color"
-            android:textStyle="bold" />
+            <ImageView
+                android:id="@+id/imgDeviceIcon"
+                android:layout_width="@dimen/size_all_deviceicon"
+                android:layout_height="@dimen/size_all_deviceicon"
+                android:layout_alignParentTop="true"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/icon_standard_light" />
 
-        <TextView
-            android:id="@+id/txtDeviceName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@id/txtDevicePw"
-            android:layout_marginRight="@dimen/margin_all_half_default"
-            android:singleLine="true"
-            android:text="Living room light"
-            android:textColor="@color/lv7Color"
-            android:textStyle="bold" />
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/txtDevicePw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:text="ON"
+                android:textColor="@color/lv4Color"
+                android:textStyle="bold" />
 
-
-</android.support.design.card.MaterialCardView>
+            <TextView
+                android:id="@+id/txtDeviceName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/txtDevicePw"
+                android:layout_marginRight="@dimen/margin_all_half_default"
+                android:singleLine="true"
+                android:text="Living room light"
+                android:textColor="@color/lv7Color"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+</com.google.android.material.card.MaterialCardView>

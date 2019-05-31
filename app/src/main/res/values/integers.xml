@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="column_count">3</integer>
+    <integer name="account_maxlength">20</integer>
+    <integer name="textshadow_home_roomtitle">10</integer>
+    <integer name="textshadow_room_roomtitle">5</integer>
+    <integer name="toggle_power_height">400</integer>
+    <integer name="toggle_power_width">320</integer>
+    <integer name="toggle_multi_height">400</integer>
+    <integer name="toggle_multi_width">320</integer>
+</resources>

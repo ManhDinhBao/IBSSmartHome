@@ -1,26 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary">
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/room_viewpager"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/materialCardView_home"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/tab_home_layout" />
+        android:layout_height="@dimen/cardviewheight_home_hometitle"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="@dimen/elevation_home_hometitle">
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/tab_home_layout"
+        <TextView
+            android:id="@+id/textview_home_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/margin_all_half_default"
+            android:fontFamily="sans-serif"
+            android:gravity="center_vertical"
+            android:text=""
+            android:textColor="@color/color_text"
+            android:textSize="@dimen/textsize_home_hometitle"
+            android:textStyle="bold" />
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycleview_home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="16dp"
-        app:tabGravity="center"
-        app:tabIndicatorHeight="0dp"
-        app:tabSelectedTextColor="@color/onColor"
-        app:tabTextColor="@color/offColor"
-        android:layout_marginRight="16dp" />
+        android:layout_below="@+id/materialCardView_home"
+        android:layout_marginLeft="@dimen/margin_all_default"
+        android:layout_marginRight="@dimen/margin_all_default"
+        android:layoutAnimation="@anim/layout_animation_slide_from_bottom"></androidx.recyclerview.widget.RecyclerView>
 </RelativeLayout>

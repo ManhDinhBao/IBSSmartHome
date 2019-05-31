@@ -5,7 +5,7 @@ import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
-import android.support.v4.content.ContextCompat;
+import androidx.core.content.ContextCompat;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
@@ -15,6 +15,7 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.material.card.MaterialCardView;
 import com.ibs.android.ibscontrol.R;
 import com.ibs.android.ibscontrol.util.ToggleSwitchButton;
 
@@ -30,10 +31,10 @@ public abstract class BaseToggleSwitch extends LinearLayout implements View.OnCl
         protected static final int ACTIVE_BG_COLOR = android.R.color.white;
         protected static final int ACTIVE_TEXT_COLOR = R.color.lv5Color;
         protected static final int INACTIVE_BG_COLOR = R.color.lv5Color;
-        protected static final int INACTIVE_TEXT_COLOR = R.color.lv3Color;
-        protected static final int SEPARATOR_COLOR = R.color.lv2Color;
+        protected static final int INACTIVE_TEXT_COLOR = android.R.color.white;
+        protected static final int SEPARATOR_COLOR = android.R.color.transparent;
 
-        protected static final int CORNER_RADIUS_DP = 4;
+        protected static final int CORNER_RADIUS_DP = 24;
         protected static final float TEXT_SIZE = 12;
         protected static final float TOGGLE_WIDTH = 48;
         protected static final float TOGGLE_HEIGHT = 32;
@@ -86,7 +87,7 @@ public abstract class BaseToggleSwitch extends LinearLayout implements View.OnCl
                 this.textSize = attributes.getDimensionPixelSize(R.styleable.ToggleSwitchOptions_android_textSize, (int) dp2px(context, BaseToggleSwitch.Default.TEXT_SIZE));
                 this.toggleWidth = attributes.getDimension(R.styleable.ToggleSwitchOptions_toggleWidth, dp2px(getContext(), BaseToggleSwitch.Default.TOGGLE_WIDTH));
                 this.toggleHeight = attributes.getDimension(R.styleable.ToggleSwitchOptions_toggleHeight, dp2px(getContext(), BaseToggleSwitch.Default.TOGGLE_HEIGHT));
-                this.cornerRadius = attributes.getDimensionPixelSize(R.styleable.ToggleSwitchOptions_cornerRadius, (int) dp2px(context, BaseToggleSwitch.Default.CORNER_RADIUS_DP));
+                this.cornerRadius = attributes.getDimensionPixelSize(R.styleable.ToggleSwitchOptions_cornerRadius, (int) dp2px(getContext(), BaseToggleSwitch.Default.CORNER_RADIUS_DP));
 
                 if (leftToggleText != null && !leftToggleText.isEmpty() &&
                         rightToggleText != null && !rightToggleText.isEmpty()) {

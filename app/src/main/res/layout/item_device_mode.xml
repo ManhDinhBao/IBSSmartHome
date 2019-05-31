@@ -4,11 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.design.card.MaterialCardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardview_devicemode"
-        android:layout_width="@dimen/size_all_itemsize"
-        android:layout_height="@dimen/size_all_itemsize"
-        app:cardCornerRadius="@dimen/size_all_cardradius">
+        android:layout_width="@dimen/card_all_devicesize"
+        android:layout_height="@dimen/card_all_devicesize"
+        app:cardCornerRadius="@dimen/card_corner_radius">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -25,5 +25,5 @@
                 android:textColor="@color/lv7Color"
                 android:textStyle="bold" />
         </RelativeLayout>
-    </android.support.design.card.MaterialCardView>
+    </com.google.android.material.card.MaterialCardView>
 </RelativeLayout>

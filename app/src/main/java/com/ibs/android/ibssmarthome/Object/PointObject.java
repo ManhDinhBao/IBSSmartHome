@@ -1,30 +1,27 @@
 package com.ibs.android.ibssmarthome.Object;
 
+
 public class PointObject {
     private String Id;
     private String Name;
     private String Description;
-    private String Address; //MQTT address
-    private String Type;
+    private String CmdAddress; //MQTT command address
+    private String SttAddress; //MQTT status address
+    private PointTypeObject Type;
+    private CharacterObject Character;
+    private Object Value;
 
-    //Type PT00000001: ON/OFF
-    //     PT00000002: BRIGHTNESS
-    //     PT00000003: SPEED
-    //     PT00000004: MODE
-    //     PT00000005: TEMPERATURE
-    //     PT00000006: SWING
-    //     PT00000007: SHOW TEXT
-
-
-    public PointObject() {
+    public PointObject()  {
     }
 
-    public PointObject(String id, String name, String description, String address, String type) {
+    public PointObject(String id, String name, String description, String cmdAddress, String sttAddress, PointTypeObject type, CharacterObject character) {
         Id = id;
         Name = name;
         Description = description;
-        Address = address;
+        CmdAddress = cmdAddress;
+        SttAddress = sttAddress;
         Type = type;
+        Character = character;
     }
 
     public String getId() {
@@ -51,20 +48,43 @@ public class PointObject {
         Description = description;
     }
 
-    public String getAddress() {
-        return Address;
+    public String getCmdAddress() {
+        return CmdAddress;
     }
 
-    public void setAddress(String address) {
-        Address = address;
+    public void setCmdAddress(String cmdAddress) {
+        CmdAddress = cmdAddress;
     }
 
-    public String getType() {
+    public String getSttAddress() {
+        return SttAddress;
+    }
+
+    public void setSttAddress(String sttAddress) {
+        SttAddress = sttAddress;
+    }
+
+    public PointTypeObject getType() {
         return Type;
     }
 
-    public void setType(String type) {
+    public void setType(PointTypeObject type) {
         Type = type;
+    }
+
+    public Object getValue() {
+        return Value;
+    }
+    public void setValue(Object value) {
+        Value = value;
+    }
+
+    public CharacterObject getCharacter() {
+        return Character;
+    }
+
+    public void setCharacter(CharacterObject character) {
+        Character = character;
     }
 
 }

@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#FFFFFF</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">#FF5B5B5B</color>
     <color name="secondColor">#455a64</color>
     <color name="yellowColor">#F0CE49</color>
     <color name="whiteColor">#FFFFFF</color>
@@ -20,5 +20,6 @@
     <color name="lv9Color">#1c1c1c</color>
     <color name="Visible">#0046E8</color>
     <color name="green">#339933</color>
+    <color name="ios_progress">#e6c6c6c6</color>
 
 </resources>
